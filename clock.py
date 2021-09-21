@@ -1,3 +1,6 @@
+# Dot matrix clock for output to console
+
+
 import time
 
 # if hour digit is of length 1, add this for padding
@@ -144,27 +147,27 @@ def display(args):
   return flat_list
   
 
-
-
-#dotrow = display(dotties)
-#print(dotrow[::1])
-print(time.strftime("%H:%M:%S", time.localtime()))
-x = 0
-while True:
-  dotties = displayArgs(time.strftime("%H:%M:%S", time.gmtime()))
-  dotrow = display(dotties)
-  for row in dotrow:
-    for i, item in enumerate(row):
-      if item == 'O':
-        row[i] = "\u2588"
-      else:
-        row[i] = "\u0020"
+def main():
+    print(time.strftime("%H:%M:%S", time.localtime()))
+    x = 0
+    while True:
+        dotties = displayArgs(time.strftime("%H:%M:%S", time.gmtime()))
+        dotrow = display(dotties)
+        for row in dotrow:
+            for i, item in enumerate(row):
+                if item == 'O':
+                    row[i] = "\u2588"
+                else:
+                    row[i] = "\u0020"
       
-  for row in dotrow:
-    print(''.join(row))
-    time.sleep(.05)
-  print("\n\n")
-  #sc+=1
-  x += 1
-  time.sleep(0.72)
+        for row in dotrow:
+            print(''.join(row))
+            time.sleep(.05)
+        print("\n\n")
 
+        x += 1
+        time.sleep(0.72)
+
+
+if __name__ == '__main__':
+    main()
